@@ -42,7 +42,6 @@ const checkIfContainsEachSqueredItem = (arr1, arr2) => {
 //     if (!(key ** 2 in frequencyCounter2)) {
 //       return false;
 //     }
-//     console.log(frequencyCounter2[key ** 2], frequencyCounter1[key]);
 //     if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
 //       console.log(frequencyCounter2[key ** 2], frequencyCounter1[key]);
 //       return false;
