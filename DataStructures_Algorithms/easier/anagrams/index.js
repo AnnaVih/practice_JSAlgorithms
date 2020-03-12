@@ -46,3 +46,27 @@
 // };
 
 module.exports = anagrams;
+
+const isAnagram = (strA, strB) => {
+  const charMapA = buildCharMap(strA)
+  const charMapB = buildCharMap(strB)
+  if (Object.keys(charMapA).length !== Object.keys(charMapB).length) return false
+
+  for (let char of charMapA) {
+    if (charMapB[char] !== charMapA[char]) return false
+  }
+
+  return true
+}
+
+const buildCharMap = str => {
+  const charMap = {}
+  for (let char of str.replace(/[^\w]/g, '').toLowerCase()) {
+    charMap[char] = charMap[char] + 1 || 1
+  }
+
+  return charMap
+}
+
+
+console.log(isAnagram('anna', 'anna'))
