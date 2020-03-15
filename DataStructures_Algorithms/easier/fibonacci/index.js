@@ -26,7 +26,7 @@ const fibRecursive = n => {
     return n
   }
 
-  return bib(n - 1) + fib(n - 2)
+  return fibRecursive(n - 1) + fibRecursive(n - 2)
 }
 
 module.exports = fib;
