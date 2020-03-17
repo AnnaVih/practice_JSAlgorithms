@@ -29,4 +29,30 @@ const fibRecursive = n => {
   return fibRecursive(n - 1) + fibRecursive(n - 2)
 }
 
+
+const memoized = cb => {
+  const cache = {}
+  return (...args) => {
+    if (cache[args]) {
+      return cache[args]
+    } else {
+      const result = cb(args)
+      cache[args] = result
+      return result
+    }
+  }
+}
+
+const fibRecursive = n => {
+  if (n < 2) {
+    return n
+  }
+
+  return fibRecursive(n - 1) + fibRecursive(n - 2)
+}
+
+const fib = memoized(fibRecursive)
+
+console.log(fib(2))
+
 module.exports = fib;
