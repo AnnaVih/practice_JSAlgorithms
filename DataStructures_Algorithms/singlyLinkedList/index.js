@@ -68,6 +68,71 @@ class SinglyLinkedList {
         this.length++
         return this
     }
+
+    get(index) {
+        if (index < 0 || index >= this.length) return undefined
+        let counter = 0
+        let current = this.head
+        while (counter !== index) {
+            current = current.next
+            counter++
+        }
+        return current
+    }
+
+    set(index, val) {
+        const foundNode = this.get(index)
+        if (!foundNode) return null
+        foundNode.val = val
+        return true
+    }
+
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false
+        if (index === this.length) {
+            return !!this.push(val)
+        }
+        if (index === 0) {
+            return !!this.unshift(val)
+        }
+        const prev = this.get(index - 1)
+        const newNode = new Node(val)
+        const temp = prev.next
+        prev.next = newNode
+        newNode.next = temp
+        this.length++
+        return true
+    }
+    remove(index) {
+        if (index < 0 || index >= this.length) return undefined
+        if (index === this.length - 1) {
+            return !!this.pop()
+        }
+        if (index === 0) {
+            return !!this.shift()
+        }
+        const prev = this.get(index - 1)
+        const removed = prev.next
+        const removedNext = removed.next
+        prev.next = removedNext
+        this.length--
+        return foundNode
+    }
+
+    reverse() {
+        let next = null
+        let prev = null
+        let node = this.head
+        this.head = this.tail
+        this.tail = node
+        for (let i = 0; i < this.length; i++) {
+            next = node.next
+            node.next = prev
+            prev = node
+            node = next
+        }
+        return this
+    }
 }
 
 const list = new SinglyLinkedList()
