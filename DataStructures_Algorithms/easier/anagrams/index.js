@@ -52,7 +52,7 @@ const isAnagram = (strA, strB) => {
   const charMapB = buildCharMap(strB)
   if (Object.keys(charMapA).length !== Object.keys(charMapB).length) return false
 
-  for (let char of charMapA) {
+  for (let char in charMapA) {
     if (charMapB[char] !== charMapA[char]) return false
   }
 
